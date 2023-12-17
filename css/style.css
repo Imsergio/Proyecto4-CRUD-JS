@@ -1,0 +1,16 @@
+body {
+  background: #000428;
+  background-image: linear-gradient(to right, var(--bg1),var(--bg2));
+  font-family: var(--title-font);
+}
+.navbar-titulo{
+  color: aliceblue;
+  font-family: var(--subtitle-font);
+}
+.form-control,
+form,
+.btn,
+tbody{
+  font-family: var(--body-font);
+  font-size: 0.9rem;
+}
