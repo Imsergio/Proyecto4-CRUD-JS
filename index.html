@@ -36,15 +36,15 @@
             <h5 class="m-0">Ingresa tus gastos</h5>
           </div>
           <div class="card-body">
-            <form>
+            <form id="formulario">
               <div class="form-group">
-                <input type="text" id="titulo" class="form-control my-3" placeholder="Título">
+                <input type="text" id="titulo" class="form-control my-3" placeholder="Nombre del gasto" required>
               </div>
               <div class="form-group">
-                <textarea id="descripcion" class="form-control my-3" placeholder="Descripción"></textarea>
+                <textarea id="descripcion" class="form-control my-3" placeholder="Descripción" required></textarea>
               </div>
               <div class="form-group">
-                <input type="number" id="precio" class="form-control my-3" placeholder="Monto">
+                <input type="number" id="precio" class="form-control my-3" placeholder="Monto" required>
               </div>
               <button type="submit" class="btn btn-primary">Agregar</button>
             </form>
@@ -54,19 +54,21 @@
       </div>
       <!--Tabla-->
       <div class="col-md-8">
-        <table class="table caption-top bg-light">
+        <table class="table gastos caption-top bg-light">
           <thead>
             <tr>
-              <th>Gasto</th>
+              <th>Nombre</th>
               <th>Descripción</th>
               <th>Monto</th>
+              <th>Acciones</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="gastos-lista">
             <tr>
-              <td>Material 1</td>
-              <td>Un Material que necesitaba</td>
-              <td>200 </td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td></td>
             </tr>
           </tbody>
         </table>
