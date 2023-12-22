@@ -20,7 +20,8 @@ function crearGasto(e) {
   let Objeto_gasto = {
     gasto,
     descripcion,
-    precio
+    precio,
+    id: Date.now()
   }
 
   if (localStorage.getItem("Gastos") == null) {
@@ -46,10 +47,12 @@ function leerGasto() {
 
   // Iterar sobre los gastos 
   if (gastosGuardados) {
+
     gastosGuardados.forEach(array => {
-      const { gasto, descripcion, precio } = array;
+      const { gasto, descripcion, precio, id } = array;
       // (Tr) para listar
       const nuevoGasto = document.createElement('tr');
+      nuevoGasto.dataset.id = id;
 
       // (td) Insertar el gasto 
       nuevoGasto.innerHTML = `
@@ -61,10 +64,10 @@ function leerGasto() {
       // botones editar/borrar gasto.
       const btnBorrar = document.createElement('td');
       btnBorrar.innerHTML = `
-      <button class="btn btn-warning editar-gasto">
+      <button onclick=actualizarGasto(${id}) class="btn btn-warning editar-gasto">
         <i class="bi bi-pencil"></i>
       </button>
-      <button class="btn btn-danger borrar-gasto">
+      <button onclick=eliminarGasto(${id}) class=" btn  btn-danger borrar-gasto">
         <i class="bi bi-trash3"></i>
       </button>`;
       nuevoGasto.appendChild(btnBorrar);
@@ -76,3 +79,16 @@ function leerGasto() {
     console.log("sin registros")
   }
 }
+
+function eliminarGasto(id) {
+  let gastosGuardados = JSON.parse(localStorage.getItem("Gastos"));
+  for(let i=0; i<gastosGuardados.length;i++) {
+    if(gastosGuardados[i].id === id){
+      gastosGuardados.splice(i,1)
+    }
+  }
+  localStorage.setItem("Gastos",JSON.stringify(gastosGuardados));
+  leerGasto()
+
+}
+
